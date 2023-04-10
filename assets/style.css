@@ -1,7 +1,7 @@
 * {
   font-family: sans-serif;
 }
-
+/*Both HTMl*/
 header {
   display: flex;
   justify-content: space-between;
@@ -16,13 +16,34 @@ header {
 h2 {
   font-size: 154%;
 }
+/* ^ */
 
-.main-card {
+/* Main HTML */
+.main-container {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
+  margin-top: 15px;
 }
 
-.card-footer {
+.recommendation {
+  margin-left: 15px;
+}
+
+.charts {
+  margin-right: 40%;
+} 
+
+/* ^ */
+
+/* Search HTML */
+.list-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.button-footer {
   display: flex;
   justify-content: center;
 }
@@ -30,4 +51,5 @@ h2 {
 .new-list {
   padding: 10px;
 }
+/* ^ */
 
