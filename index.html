@@ -5,7 +5,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>song identifier</title>
-
     <link rel="stylesheet" href="./assets/style.css" />
 </head>
 
@@ -13,10 +12,11 @@
     <header>
         <h1>genre recommendations</h1>
         <h2>search music/artist</h2>
-        <div>
-            <input type="text" placeholder="Search..">
-        </div>
+        <form id="genre-form">
+            <input id="genre-input" type="text" placeholder="Search..">
+        </form>
         <button>search</button>
+       
     </header>
 
     <div class="card">
@@ -45,8 +45,8 @@
     </div>
     <footer class="card-footer">
         <h2>genres</h2>
-       
 
+    
     </footer>
 
     <script src="./assets/script.js"></script>
