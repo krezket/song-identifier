@@ -5,22 +5,23 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>song identifier</title>
-
+		<link rel="stylesheet" href="./assets/reset.css">
     <link rel="stylesheet" href="./assets/style.css" />
 </head>
 
 <body>
     <header>
-        <h1>genre recommendations</h1>
-        <h2>search music/artist</h2>
-        <div>
-            <input type="text" placeholder="Search..">
-        </div>
+			<div>
+				<h1 class="title">Genre Recommendations</h1>
+			</div>
+			<div class="nav">
+				<h2>Search music/artist</h2>
+        <input type="text" placeholder="Search..">
         <button>search</button>
-    </header>
-
-   
-    <div class="card">
+			</div>
+		</header>
+			
+    <div class="main-card">
         <h2>song list recomendations</h2>
         <ol>
             <li></li>
@@ -34,9 +35,7 @@
         </ol>
     </div>
     <footer class="card-footer">
-        
-        <button>generate new list</button>
-
+      <button class="new-list">Generate New List</button>
     </footer>
 
     <script src="./assets/script.js"></script>

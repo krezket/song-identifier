@@ -1,0 +1,33 @@
+* {
+  font-family: sans-serif;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  background: grey;
+  padding: 15px;
+}
+
+.title {
+  font-size: 200%;
+}
+
+h2 {
+  font-size: 154%;
+}
+
+.main-card {
+  display: flex;
+  justify-content: center;
+}
+
+.card-footer {
+  display: flex;
+  justify-content: center;
+}
+
+.new-list {
+  padding: 10px;
+}
+
