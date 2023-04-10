@@ -6,7 +6,7 @@ function searchFormSubmit(event) {
 
     var textInputVal = document.querySelector("#text-input").value;
 
-    var queryString = './search-results.html?q=' + textInputVal;
+    var queryString = './search.html?q=' + textInputVal;
 
     location.assign(queryString);
 }
