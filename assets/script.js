@@ -1,5 +1,6 @@
 var headerEl = document.querySelector("#header");
 var searchEl = document.querySelector("#form")
+var top8= document.querySelector("#chartList")
 
 function searchFormSubmit(event) {
     event.preventDefault();
@@ -13,24 +14,16 @@ function searchFormSubmit(event) {
 
 searchEl.addEventListener("submit", searchFormSubmit)
 
+
 var topCharts = {
-    method: 'GET',
-    headers: {
-        'X-RapidAPI-Key': '61a72dd549msh4a4ae65982725acp1ad21ajsnb2c2fecc8b2c',
-        'X-RapidAPI-Host': 'billboard-api5.p.rapidapi.com'
-    }
+	method: 'GET',
+	headers: {
+		'X-RapidAPI-Key': '61a72dd549msh4a4ae65982725acp1ad21ajsnb2c2fecc8b2c',
+		'X-RapidAPI-Host': 'billboard3.p.rapidapi.com'
+	}
 };
 
-fetch('https://billboard-api5.p.rapidapi.com/api/charts/hot-100?week=2023-04-11', topCharts)
-    .then(response => response.json())
-    .then(response => showResults(response))
-    .catch(err => console.error(err));
-
-function showResults(billboard) {
-    // console.log(billboard.chart.entries[0].artist) 
-    var list= billboard.chart.entries;
-    for (let i = 0; i < 8; i++) {
-       console.log(list[i]);
-        
-    }  
-}
+fetch('https://billboard3.p.rapidapi.com/hot-100?date=2023-04-07&range=1-8', topCharts)
+	.then(response => response.json())
+	.then(response => console.log(response))
+	.catch(err => console.error(err));
