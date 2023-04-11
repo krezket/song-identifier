@@ -1,4 +1,4 @@
-var headerEl = document.querySelector("#header");
+////////////////// SEARCH FORM //////////////////////////////////
 var searchEl = document.querySelector("#form")
 var top8= document.querySelector("#chartList")
 
@@ -13,6 +13,7 @@ function searchFormSubmit(event) {
 }
 
 searchEl.addEventListener("submit", searchFormSubmit)
+/////////////////////////////////////////////////////////////////
 
 
 var topCharts = {
