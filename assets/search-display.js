@@ -16,10 +16,10 @@ function searchApi(search) {
         }
     };
 
-    var searchURL = 'https://spotify81.p.rapidapi.com/search?q=&type=multi&offset=0&limit=50&numberOfTopResults=5';
+    var searchURL = 'https://spotify81.p.rapidapi.com/search?q=&type=genres&offset=0&limit=50&numberOfTopResults=5';
 
     if (search) {
-        searchURL = 'https://spotify81.p.rapidapi.com/search/?q=' + search + '&type=multi&albums&offset=0&limit=100&numberOfTopResults=5';
+        searchURL = 'https://spotify81.p.rapidapi.com/search/?q=' + search + '&type=genres&albums&offset=0&limit=100&numberOfTopResults=5';
     }
     
     fetch(searchURL, options)
@@ -34,7 +34,7 @@ function showResults(results) {
     var searchTitle = document.querySelector("#search-title");
     var resultCon = document.querySelector("#search-result");
     searchTitle.textContent = "";
-    searchTitle.textContent = "Genres";
+    searchTitle.textContent = "Here's what we have for you.";
     searchTitle.setAttribute("style", "margin: 1%;")
 
 
@@ -48,23 +48,28 @@ function showResults(results) {
         genreImg.push(genreImgs)
     }
 
-    // ARTIST LOOP
-    var artistName = [];
-    var artistImg = [];
-    for (let i = 0; i < results.artists.items.length; i++) {
-        var artistNames = results.artists.items[i].data.profile.name;
-        artistName.push(artistNames)
-        var artistImgs = results.artists.items[0].data.visuals.avatarImage.sources[1];
-        artistImg.push(artistImgs)
-    }
+    // // ARTIST LOOP
+    // var artistName = [];
+    // var artistImg = [];
+    // for (let i = 0; i < results.artists.items.length; i++) {
+    //     var artistNames = results.artists.items[i].data.profile.name;
+    //     artistName.push(artistNames)
+    //     var artistImgs = results.artists.items[0].data.visuals.avatarImage.sources[1];
+    //     artistImg.push(artistImgs)
+    // }
+    // console.log(artistName)
+    // // RANDOM ARTIST LOOP
+    // var randomArtist = artistName.sort((a, b) => 0.5 - Math.random())
+    // console.log(randomArtist)
 
     // DISPLAY RESULTS
+    var container = document.createElement("div");
     var listEl = document.createElement("h3");
-    listEl.textContent = genreName[0];
-    resultCon.append(listEl);
+    listEl.textContent = genreName[0] +  + genreName[1];
+    container.append(listEl);
     var avatarImg = document.createElement("img");
-    avatarImg.setAttribute("src", genreImg[0]);
-    resultCon.append(avatarImg);
+    avatarImg.setAttribute("src", genreImg[0])
+    container.append(avatarImg);
 
     
 
