@@ -28,36 +28,43 @@ function searchApi(search) {
         .catch(err => console.error(err))
 }
 
-function showResults(results, search) {
+function showResults(results) {
+
+    // TITLE
     var searchTitle = document.querySelector("#search-title");
     var resultCon = document.querySelector("#search-result");
     searchTitle.textContent = "";
-    searchTitle.textContent = "Artists";
-    searchTitle.setAttribute("style", "margin: 2%;")
+    searchTitle.textContent = "Genres";
+    searchTitle.setAttribute("style", "margin: 1%;")
+
+
+    // GENRE LOOP
+    var genreName = [];
+    var genreImg = [];
+    for (let i = 0; i < results.genres.items.length; i++) {
+        var genreNames = results.genres.items[i].data.name;
+        genreName.push(genreNames);
+        var genreImgs = results.genres.items[i].data.image.sources[0].url;
+        genreImg.push(genreImgs)
+    }
+
+    // DISPLAY RESULTS
     var listEl = document.createElement("h3");
-    listEl.textContent = results.genres.items[0].data.name;
+    listEl.textContent = genreName[0];
     resultCon.append(listEl);
     var avatarImg = document.createElement("img");
-    avatarImg.setAttribute("src", results.genres.items[0].data.image.sources[0].url);
+    avatarImg.setAttribute("src", genreImg[0]);
     resultCon.append(avatarImg);
 
-    console.log(search)
-    console.log(results);
-    console.log(results.artists.items[0].data.profile.name);
-    console.log(results.artists.items[0].data.uri)
-    
-    // let artistName = [];
-    // console.log(artistName)
-    // for (let i = 0; i < results.artists.items.length; i++) {
-    //     var artistNames = results.artists.items[i].data.profile.name
-    //     console.log(artistNames)
-    //     artistName.push(artistNames)
-    // }
-    // var resultEl = document.querySelector('#search-result');
 
+    // console.log(search)
+    console.log(results);
+    // console.log(results.artists.items[0].data.profile.name);
+    // console.log(results.artists.items[0].data.uri)
+    
 }
 
-////////////////// SEARCH FORM //////////////////////////////////
+// SEARCH FORM 
 function searchFormSubmit(event) {
     event.preventDefault();
 
@@ -69,5 +76,5 @@ function searchFormSubmit(event) {
 }
 
 searchEl.addEventListener("submit", searchFormSubmit)
-///////////////////////////////////////////////////////////////////
+
 getParams()
