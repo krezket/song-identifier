@@ -21,8 +21,16 @@ var topCharts = {
     }
 };
 
-fetch('https://billboard-api5.p.rapidapi.com/api/charts/hot-100?week=2022-10-27', topCharts)
+fetch('https://billboard-api5.p.rapidapi.com/api/charts/hot-100?week=2023-04-11', topCharts)
     .then(response => response.json())
-    .then(response => console.log(response))
+    .then(response => showResults(response))
     .catch(err => console.error(err));
-console.log(topCharts)
+
+function showResults(billboard) {
+    // console.log(billboard.chart.entries[0].artist) 
+    var list= billboard.chart.entries;
+    for (let i = 0; i < 8; i++) {
+       console.log(list[i]);
+        
+    }  
+}
