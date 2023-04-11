@@ -35,10 +35,10 @@ function showResults(results, search) {
     searchTitle.textContent = "Artists";
     searchTitle.setAttribute("style", "margin: 2%;")
     var listEl = document.createElement("h3");
-    listEl.textContent = results.artists.items[0].data.profile.name;
+    listEl.textContent = results.genres.items[0].data.name;
     resultCon.append(listEl);
     var avatarImg = document.createElement("img");
-    avatarImg.setAttribute("src", results.artists.items[0].data.visuals.avatarImage.sources[1].url);
+    avatarImg.setAttribute("src", results.genres.items[0].data.image.sources[0].url);
     resultCon.append(avatarImg);
 
     console.log(search)
