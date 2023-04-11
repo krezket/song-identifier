@@ -16,10 +16,10 @@ function searchApi(search) {
         }
     };
 
-    var searchURL = 'https://spotify81.p.rapidapi.com/search?q=%3CREQUIRED%3E&type=multi&offset=0&limit=20&numberOfTopResults=5';
+    var searchURL = 'https://spotify81.p.rapidapi.com/search?q=%3CREQUIRED%3E&type=genre&offset=0&limit=20&numberOfTopResults=5';
 
     if (search) {
-        searchURL = 'https://spotify81.p.rapidapi.com/search/?q=' + search + '&type=multi&offset=0&limit=20&numberOfTopResults=5';
+        searchURL = 'https://spotify81.p.rapidapi.com/search/?q=' + search + '&type=genre&offset=0&limit=20&numberOfTopResults=5';
     }
     
     fetch(searchURL, options)
@@ -29,17 +29,27 @@ function searchApi(search) {
 }
 
 function showResults(results, search) {
-    var searchTitle = document.querySelector("#search-title")
-    searchTitle.textContent = ""
+    var searchTitle = document.querySelector("#search-title");
+    var resultCon = document.querySelector("#search-result");
+    searchTitle.textContent = "";
+    searchTitle.textContent = "Artists";
+    searchTitle.setAttribute("style", "margin: 2%;")
+    var listEl = document.createElement("h3");
+    listEl.textContent = results.artists.items[0].data.profile.name;
+    resultCon.append(listEl);
+    var avatarImg = document.createElement("img");
+    avatarImg.setAttribute("src", results.artists.items[0].data.visuals.avatarImage.sources[1].url);
+    resultCon.append(avatarImg);
+
     console.log(search)
     console.log(results);
+    console.log(results.artists.items[0].data.profile.name);
     console.log(results.artists.items[0].data.uri)
-    // console.log(results.tracks.hits[0].track.title);
     
     // let artistName = [];
     // console.log(artistName)
-    // for (let i = 0; i < results.artists.hits.length; i++) {
-    //     var artistNames = results.artists.hits[i].artist.name[i]
+    // for (let i = 0; i < results.artists.items.length; i++) {
+    //     var artistNames = results.artists.items[i].data.profile.name
     //     console.log(artistNames)
     //     artistName.push(artistNames)
     // }
