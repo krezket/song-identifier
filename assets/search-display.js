@@ -16,10 +16,10 @@ function searchApi(search) {
         }
     };
 
-    var searchURL = 'https://spotify81.p.rapidapi.com/search?q=&type=genres&offset=0&limit=50&numberOfTopResults=5';
+    var searchURL = 'https://spotify81.p.rapidapi.com/search?q=&type=artists&offset=0&limit=50&numberOfTopResults=5';
 
     if (search) {
-        searchURL = 'https://spotify81.p.rapidapi.com/search/?q=' + search + '&type=genres&albums&offset=0&limit=100&numberOfTopResults=5';
+        searchURL = 'https://spotify81.p.rapidapi.com/search/?q=' + search + '&type=artists&albums&offset=0&limit=100&numberOfTopResults=5';
     }
     
     fetch(searchURL, options)
@@ -30,54 +30,45 @@ function searchApi(search) {
 
 function showResults(results) {
     console.log(results);
+
     // TITLE
+    var Title = document.querySelector("#title");
+    Title.setAttribute("style", "display: flex; flex-direction: column; align-items: center; padding-bottom: 50px;");
     var searchTitle = document.querySelector("#search-title");
-    var resultCon = document.querySelector("#search-result");
-    searchTitle.textContent = "";
     searchTitle.textContent = "Here's what we have for you.";
-    searchTitle.setAttribute("style", "margin: 1%;")
+    searchTitle.setAttribute("style", "margin: 1%;");
 
-
-    // GENRE LOOP
-    var genreName = [];
-    var genreImg = [];
-    for (let i = 0; i < results.genres.items.length; i++) {
-        var genreNames = results.genres.items[i].data.name;
-        genreName.push(genreNames);
-        var genreImgs = results.genres.items[i].data.image.sources[0].url;
-        genreImg.push(genreImgs)
+    // ARTIST LOOP
+    var artistName = [];
+    var artistImg = [];
+    for (let i = 0; i < results.artists.items.length; i++) {
+        var artistNames = results.artists.items[i].data.profile.name;
+        artistName.push(artistNames)
+        var artistImgs = results.artists.items[0].data.visuals.avatarImage.sources[1].url;
+        artistImg.push(artistImgs)
     }
+    console.log(artistImg[0])
 
-    // // ARTIST LOOP
-    // var artistName = [];
-    // var artistImg = [];
-    // for (let i = 0; i < results.artists.items.length; i++) {
-    //     var artistNames = results.artists.items[i].data.profile.name;
-    //     artistName.push(artistNames)
-    //     var artistImgs = results.artists.items[0].data.visuals.avatarImage.sources[1];
-    //     artistImg.push(artistImgs)
-    // }
-    // console.log(artistName)
-    // // RANDOM ARTIST LOOP
-    // var randomArtist = artistName.sort((a, b) => 0.5 - Math.random())
-    // console.log(randomArtist)
+    // DISPLAY SEARCHED RESULT
+    var listCard = document.querySelector("#list-card");
+    listCard.setAttribute("style", "padding-left: 50px;")
 
-    // DISPLAY RESULTS
-    var container = document.createElement("div");
-    var listEl = document.createElement("h3");
-    listEl.textContent = genreName[0] +  + genreName[1];
-    container.append(listEl);
+    var first = document.querySelector("#first");
+    first.setAttribute("style", "display: flex; justify-content: space-evenly; align-items: center; margin-bottom: 40px;")
+    var listEl1 = document.createElement("h3");
+    listEl1.textContent = "Artists similar to: " + artistName[0];
+    first.append(listEl1);
+    
     var avatarImg = document.createElement("img");
-    avatarImg.setAttribute("src", genreImg[0])
-    container.append(avatarImg);
+    avatarImg.setAttribute("src", artistImg[0])
+    avatarImg.setAttribute("style", "border-radius: 100%;")
+    first.append(avatarImg);
 
-    
+    displaySim(results.artists.items[0].data.uri);
+}
 
-
-    // console.log(search)
-    // console.log(results.artists.items[0].data.profile.name);
-    // console.log(results.artists.items[0].data.uri)
-    
+function displaySim(artistId) {
+    console.log(artistId)
 }
 
 // SEARCH FORM 
