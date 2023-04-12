@@ -8,35 +8,28 @@
     <link href="/dist/output.css" rel="stylesheet">
 </head>
 
-<body>
+<body class="font-sans">
     <header>
-			<div>
-				<h1 class="title">Genre Recommendations</h1>
-			</div>
-			<div class="nav">
-				<h2>Search music/artist</h2>
-        <input type="text" placeholder="Search..">
-        <button>search</button>
-			</div>
+			<div class="flex justify-between p-5 bg-slate-400">
+				<h1 class="text-4xl p-2 pl-20 -ml-16 bg-slate-200">Genre Recommendations</h1>
+        <form class="nav text-lg" id="form">
+          <h2>Search music/artist</h2>
+          <input class="outline-none text-base p-0.5 rounded border-2 hover:border-blue-500" id="text-input" type="text" placeholder="Search..">
+          <button class="border-2 text-base p-0.5 rounded border-slate-100 bg-slate-200 hover:brightness-105">Search</button>
+        </form>
+      </div>
 		</header>
 
     <div class="list-card">
-        <h2>song list recomendations</h2>
-        <ol>
-						<li>1</li>
-            <li>2</li>
-            <li>3</li>
-            <li>4</li>
-            <li>5</li>
-            <li>6</li>
-            <li>7</li>
-            <li>8</li>
-        </ol>
+        <h2 class="flex justify-center text-2xl mt-4 underline" id="search-title" >Song List Recomendations</h2>
+        <div id="search-result"></div>
+        <ol></ol>
     </div>
 
-    <footer class="button-footer">
-      <button class="new-list">Generate New List</button>
+    <footer class="bg-slate-400 p-8 mt-96 button-footer flex justify-center">
+      <button class="transition ease-in-out hover:scale-105 duration-700 text-xl p-5 delay-150 hover:-translate-y-1
+      rounded border-4 border-slate-100 bg-slate-200 hover:brightness-105">Generate New List</button>
     </footer>
-
+    
     <script src="./assets/search-display.js"></script>
 </body>
