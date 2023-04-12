@@ -1,4 +1,4 @@
-var searchEl = document.querySelector("#form")
+var searchEl = document.querySelector("#form");
 var listCard = document.querySelector("#list-card");
 
 const options = {
@@ -91,12 +91,15 @@ function displaySim(simResults) {
     console.log(simResults)
 
     // SIMILAR ARTIST LOOP
+    const array = simResults.data.artist.relatedContent.relatedArtists.items
+    const shuffledArray = array.sort((a, b) => 0.5 - Math.random())
+
     let similarArtist = [];
     let simArtImg = [];
-    for (let i = 0; i < simResults.data.artist.relatedContent.relatedArtists.items.length; i++) {
-        let similarArtists = simResults.data.artist.relatedContent.relatedArtists.items[i].profile.name;
+    for (let i = 0; i < shuffledArray.length; i++) {
+        let similarArtists = shuffledArray[i].profile.name;
         similarArtist.push(similarArtists);
-        let simArtImgs = simResults.data.artist.relatedContent.relatedArtists.items[i].visuals.avatarImage.sources[0].url;
+        let simArtImgs = shuffledArray[i].visuals.avatarImage.sources[0].url;
         simArtImg.push(simArtImgs);
     }
     
@@ -168,7 +171,14 @@ function displaySim(simResults) {
     simImg6.setAttribute("src", simArtImg[5]);
     simImg6.setAttribute("style", "width: 160px; border-radius: 5%;")
     simCard6.append(simImg6);
-    second.append(simCard6)
+    second.append(simCard6);
+    
+    var newList = document.querySelector("#new");
+    newList.addEventListener("click", function(){
+        first.textContent = ""
+        second.textContent = ""
+        getParams()
+    })
 }
 
 // SEARCH FORM 
