@@ -36,7 +36,7 @@ function showResults(results) {
     console.log(results);
 
     // TITLE
-    var Title = document.querySelector("#title");
+    var Title = document.querySelector("title");
     Title.setAttribute("style", "display: flex; flex-direction: column; align-items: center; padding-bottom: 50px;");
     var searchTitle = document.querySelector("#search-title");
     searchTitle.textContent = "Here's what we have for you.";
@@ -169,9 +169,6 @@ function displaySim(simResults) {
     simImg6.setAttribute("style", "width: 160px; border-radius: 5%;")
     simCard6.append(simImg6);
     second.append(simCard6)
-
-    cardClass.setAttribute("style", "display: flex; justify-content: center;")
-    
 }
 
 // SEARCH FORM 
