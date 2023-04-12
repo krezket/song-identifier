@@ -40,15 +40,15 @@ function display(response) {
     
     for (let i = 0; i < list.length; i++) {
         var li = document.createElement('li');
-        li.textContent = list[i].artist;
+        li.textContent = list[i].artist+ ":"+list[i].title;
         songList.appendChild(li)
     }
 
-    for (let i = 0; i < list.length; i++) {
-        var li = document.createElement('li');
-        li.textContent = list[i].title;
-        songList.appendChild(li)
-    }
+    // for (let i = 0; i < list.length; i++) {
+    //     var li = document.createElement('li');
+    //     li.textContent = list[i].title;
+    //     songList.appendChild(li)
+    // }
 
 }
 
