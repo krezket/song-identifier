@@ -4,24 +4,22 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>song identifier</title>
-    <link rel="stylesheet" href="./assets/reset.css">
-  <link rel="stylesheet" href="./assets/style.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-    <header>
-        <div>
-            <h1 class="title">Genre Recommendations</h1>
-        </div>
-        <form class="nav" id="form">
-            <h2>Search</h2>
-            <input id="text-input" type="text" placeholder="Search...">
-            <button>search</button>
-        </form>
+<body class="font-sans">
+  <header>
+    <div class="flex justify-between p-5 bg-slate-400">
+      <h1 class="text-4xl p-2 pl-20 -ml-16 bg-slate-200">Genre Recommendations</h1>
+      <form class="nav text-lg" id="form">
+        <h2>Search</h2>
+        <input class="outline-none text-base p-0.5 rounded border-2 hover:border-blue-500" id="text-input" type="text" placeholder="Search..">
+          <button class="border-2 text-base p-0.5 rounded border-slate-100 bg-slate-200 hover:brightness-105">Search</button>
+      </form>
+    </div>
     </header>
-    <div class="main-container">
-        <h2 class="recommendation">Our Recommendations</h2>
-        <h2 class="charts">Top Charts</h2>
-		<ol id="chartList"></ol>
+    <div class="">
+      <h2 class="recommendations flex-col underline text-2xl ml-10 mt-4">Our Recommendations</h2>
+      <h2 class="charts flex justify-center underline text-2xl -mt-7">Top Charts</h2>
     </div>
   <footer>
     </footer>
