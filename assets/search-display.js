@@ -18,7 +18,6 @@ function getParams() {
 
 // INITIAL SEARCH
 function searchApi(search) {
-
     var searchURL = 'https://spotify81.p.rapidapi.com/search?q=&type=artists&offset=0&limit=50&numberOfTopResults=5';
 
     if (search) {
@@ -32,8 +31,8 @@ function searchApi(search) {
 }
 
 // SEARCH RESULTS
-function showResults(results) {
-    console.log(results);
+function showResults(results, search) {
+    console.log(search);
 
     // TITLE
     var Title = document.querySelector("title");
@@ -56,7 +55,7 @@ function showResults(results) {
     // DISPLAY SEARCHED RESULT
     listCard.setAttribute("style", "padding-left: 50px; padding-right: 50px;")
     var first = document.querySelector("#first");
-    first.setAttribute("style", "display: flex; justify-content: space-evenly; align-items: center; margin-bottom: 40px;")
+    first.setAttribute("style", "display: flex; justify-content: space-evenly; align-items: center; margin-bottom: 40px; padding-left: 30%; padding-right: 30%;")
     
     var listEl = document.createElement("h1");
     listEl.textContent = "Artists similar to: " + artistName[0];
@@ -67,11 +66,11 @@ function showResults(results) {
     avatarImg.setAttribute("style", "border-radius: 100%;");
     first.append(avatarImg);
 
-    searchSim(results.artists.items[0].data.uri);
+    searchSim(results.artists.items[0].data.uri, search);
 }
 
 // SEARCH SIMILAR ARTISTS
-function searchSim(artistId) {
+function searchSim(artistId, search) {
     Id = artistId.slice(15, 37);
 
     var relatedURL = 'https://spotify81.p.rapidapi.com/artist_related?id='
@@ -82,13 +81,12 @@ function searchSim(artistId) {
 
     fetch(relatedURL, options)
 	.then(response => response.json())
-	.then(response => displaySim(response))
+	.then(response => displaySim(response, search))
 	.catch(err => console.error(err));
 }
 
 // DISPLAY SIMILAR ARTISTS
-function displaySim(simResults) {
-    console.log(simResults)
+function displaySim(simResults, search) {
 
     // SIMILAR ARTIST LOOP
     const array = simResults.data.artist.relatedContent.relatedArtists.items
@@ -96,16 +94,20 @@ function displaySim(simResults) {
 
     let similarArtist = [];
     let simArtImg = [];
+    let artistLink = [];
     for (let i = 0; i < shuffledArray.length; i++) {
         let similarArtists = shuffledArray[i].profile.name;
         similarArtist.push(similarArtists);
         let simArtImgs = shuffledArray[i].visuals.avatarImage.sources[0].url;
         simArtImg.push(simArtImgs);
+        let artistLinks = "https://open.spotify.com/artist/" + shuffledArray[i].id;
+        artistLink.push(artistLinks);
+        
     }
-    
+    console.log(artistLink)
+
     var second = document.querySelector("#second");
-    second.setAttribute("style", "display: flex; justify-content: space-between;");
-    var cardClass = document.querySelector("card")
+    second.setAttribute("style", "display: flex; justify-content: space-between; margin-bottom: 40px;");
 
     // FIRST
     var simCard = document.querySelector("#rel-art");
@@ -114,7 +116,10 @@ function displaySim(simResults) {
     simCard.append(titleName);
     var simImg = document.createElement("img");
     simImg.setAttribute("src", simArtImg[0]);
-    simImg.setAttribute("style", "width: 160px; border-radius: 5%;")
+    simImg.onclick = function(){
+        window.open(artistLink[0], "_blank");
+    }
+    simImg.setAttribute("style", "width: 160px; border-radius: 5%; box-shadow: 10px 5px 5px red;")
     simCard.append(simImg);
     second.append(simCard);
 
@@ -125,7 +130,10 @@ function displaySim(simResults) {
     simCard2.append(titleName2);
     var simImg2 = document.createElement("img");
     simImg2.setAttribute("src", simArtImg[1]);
-    simImg2.setAttribute("style", "width: 160px; border-radius: 5%;")
+    simImg2.onclick = function(){
+        window.open(artistLink[1], "_blank");
+    }
+    simImg2.setAttribute("style", "width: 160px; border-radius: 5%; box-shadow: 10px 5px 5px red;")
     simCard2.append(simImg2);
     second.append(simCard2);
 
@@ -136,7 +144,10 @@ function displaySim(simResults) {
     simCard3.append(titleName3);
     var simImg3 = document.createElement("img");
     simImg3.setAttribute("src", simArtImg[2]);
-    simImg3.setAttribute("style", "width: 160px; border-radius: 5%;")
+    simImg3.onclick = function(){
+        window.open(artistLink[2], "_blank");
+    }
+    simImg3.setAttribute("style", "width: 160px; border-radius: 5%; box-shadow: 10px 5px 5px red;")
     simCard3.append(simImg3);
     second.append(simCard3);
     
@@ -147,7 +158,10 @@ function displaySim(simResults) {
     simCard4.append(simImg4);
     var simImg4 = document.createElement("img");
     simImg4.setAttribute("src", simArtImg[3]);
-    simImg4.setAttribute("style", "width: 160px; border-radius: 5%;")
+    simImg4.onclick = function(){
+        window.open(artistLink[3], "_blank");
+    }
+    simImg4.setAttribute("style", "width: 160px; border-radius: 5%; box-shadow: 10px 5px 5px red;")
     simCard4.append(simImg4);
     second.append(simCard4);
 
@@ -158,7 +172,10 @@ function displaySim(simResults) {
     simCard5.append(titleName5);
     var simImg5 = document.createElement("img");
     simImg5.setAttribute("src", simArtImg[4]);
-    simImg5.setAttribute("style", "width: 160px; border-radius: 5%;")
+    simImg5.onclick = function(){
+        window.open(artistLink[4], "_blank");
+    }
+    simImg5.setAttribute("style", "width: 160px; border-radius: 5%; box-shadow: 10px 5px 5px red;")
     simCard5.append(simImg5);
     second.append(simCard5);
 
@@ -169,15 +186,103 @@ function displaySim(simResults) {
     simCard6.append(titleName6);
     var simImg6 = document.createElement("img");
     simImg6.setAttribute("src", simArtImg[5]);
-    simImg6.setAttribute("style", "width: 160px; border-radius: 5%;")
+    simImg6.onclick = function(){
+        window.open(artistLink[5], "_blank");
+    }
+    simImg6.setAttribute("style", "width: 160px; border-radius: 5%; box-shadow: 10px 5px 5px red;")
     simCard6.append(simImg6);
     second.append(simCard6);
+
+    var third = document.querySelector("#third");
+    third.setAttribute("style", "display: flex; justify-content: space-between; margin-bottom: 40px;");
+
+    // 7TH
+    var simCard7 = document.querySelector("#rel-art7");
+    var titleName7 = document.createElement("h1");
+    titleName7.textContent = similarArtist[6];
+    simCard7.append(titleName7);
+    var simImg7 = document.createElement("img");
+    simImg7.setAttribute("src", simArtImg[6]);
+    simImg7.onclick = function(){
+        window.open(artistLink[6], "_blank");
+    }
+    simImg7.setAttribute("style", "width: 160px; border-radius: 5%; box-shadow: 10px 5px 5px red;")
+    simCard7.append(simImg7);
+    third.append(simCard7);
+
+    // 8TH
+    var simCard8 = document.querySelector("#rel-art8");
+    var titleName8 = document.createElement("h1");
+    titleName8.textContent = similarArtist[7];
+    simCard8.append(titleName8);
+    var simImg8 = document.createElement("img");
+    simImg8.setAttribute("src", simArtImg[7]);
+    simImg8.onclick = function(){
+        window.open(artistLink[7], "_blank");
+    }
+    simImg8.setAttribute("style", "width: 160px; border-radius: 5%; box-shadow: 10px 5px 5px red;")
+    simCard8.append(simImg8);
+    third.append(simCard8);
     
+    // 9TH
+    var simCard9 = document.querySelector("#rel-art9");
+    var titleName9 = document.createElement("h1");
+    titleName9.textContent = similarArtist[8];
+    simCard9.append(titleName9);
+    var simImg9 = document.createElement("img");
+    simImg9.setAttribute("src", simArtImg[8]);
+    simImg9.onclick = function(){
+        window.open(artistLink[8], "_blank");
+    }
+    simImg9.setAttribute("style", "width: 160px; border-radius: 5%; box-shadow: 10px 5px 5px red;")
+    simCard9.append(simImg9);
+    third.append(simCard9);    
+
+    // 10TH
+    var simCard10 = document.querySelector("#rel-art10");
+    var titleName10 = document.createElement("h1");
+    titleName10.textContent = similarArtist[9];
+    simCard10.append(titleName10);
+    var simImg10 = document.createElement("img");
+    simImg10.setAttribute("src", simArtImg[9]);
+    simImg10.onclick = function(){
+        window.open(artistLink[9], "_blank");
+    }
+    simImg10.setAttribute("style", "width: 160px; border-radius: 5%; box-shadow: 10px 5px 5px red;")
+    simCard10.append(simImg10);
+    third.append(simCard10);
+    
+    // 11TH
+    var simCard11 = document.querySelector("#rel-art11");
+    var titleName11 = document.createElement("h1");
+    titleName11.textContent = similarArtist[10];
+    simCard11.append(titleName11);
+    var simImg11 = document.createElement("img");
+    simImg11.setAttribute("src", simArtImg[10]);
+    simImg11.onclick = function(){
+        window.open(artistLink[10], "_blank");
+    }
+    simImg11.setAttribute("style", "width: 160px; border-radius: 5%; box-shadow: 10px 5px 5px red;")
+    simCard11.append(simImg11);
+    third.append(simCard11);
+    
+    // 12TH
+    var simCard12 = document.querySelector("#rel-art12");
+    var titleName12 = document.createElement("h1");
+    titleName12.textContent = similarArtist[11];
+    simCard12.append(titleName12);
+    var simImg12 = document.createElement("img");
+    simImg12.setAttribute("src", simArtImg[11]);
+    simImg12.onclick = function(){
+        window.open(artistLink[11], "_blank");
+    }
+    simImg12.setAttribute("style", "width: 160px; border-radius: 5%; box-shadow: 10px 5px 5px red;")
+    simCard12.append(simImg12);
+    third.append(simCard12); 
+   
     var newList = document.querySelector("#new");
     newList.addEventListener("click", function(){
-        first.textContent = ""
-        second.textContent = ""
-        getParams()
+        window.location.reload();
     })
 }
 
