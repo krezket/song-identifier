@@ -28,7 +28,7 @@ fetch('https://billboard3.p.rapidapi.com/hot-100?date=2023-04-07&range=1-8', top
     .then(response => response.json())
     .then(response => display(response))
     .catch(err => console.error(err));
-
+//creating top charts list
 function display(response) {
     list = response;
     for (let i = 0; i < list.length; i++) {
