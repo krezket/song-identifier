@@ -38,18 +38,27 @@ function display(response) {
 
     }
     
-    for (let i = 0; i < list.length; i++) {
-        var li = document.createElement('li');
-        li.textContent = list[i].artist+ ":"+list[i].title;
-        songList.appendChild(li)
-    }
-
     // for (let i = 0; i < list.length; i++) {
     //     var li = document.createElement('li');
-    //     li.textContent = list[i].title;
+    //     li.textContent = list[i].artist + " " + list[i].title;;
     //     songList.appendChild(li)
     // }
+    for (let i = 0; i < list.length; i++) {
+        var li = document.createElement('li');
+        var pic = document.createElement('img')
+        li.textContent = list[i].artist + ":" + list[i].title;
+        pic.src = list[i].image
+        songList.appendChild(li)
+        songList.appendChild(pic)
+    }
+ 
 
+
+//     for (let i = 0; i < list.length; i++) {
+//         var li = document.createElement('li');
+//         li.textContent = list[i].title;
+//         songList.appendChild(li)
+//     }
 }
 
 
