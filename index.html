@@ -6,39 +6,39 @@
   <title>song identifier</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="font-sans">
+<body class="font-sans pb-16 text-neutral-300 bg-gradient-to-b from-neutral-800 from-10% via-neutral-900 via-30% to-neutral-950 to-90%">
   <header>
-    <div class="flex justify-between p-5 bg-slate-400">
-      <h1 class="text-4xl p-2 pl-20 -ml-16 bg-slate-200">Genre Recommendations</h1>
-      <form class="nav text-lg" id="form">
-        <h2>Search</h2>
-        <input class="outline-none text-base p-0.5 rounded border-2 hover:border-blue-500" id="text-input" type="text" placeholder="Search..">
-          <button class="border-2 text-base p-0.5 rounded border-slate-100 bg-slate-200 hover:brightness-105">Search</button>
+    <div class="flex justify-between p-3 bg-neutral-950">
+      <h1 class="text-4xl p-2 pl-20 -ml-16 font-medium">Genre Recommendations</h1>
+      <form class="nav text-lg mr-4" id="form">
+        <h2>Search Artist</h2>
+        <input class="outline-none text-neutral-950 text-base p-0.5 rounded border-2 hover:border-blue-500" id="text-input" type="text" placeholder="Search..">
+          <button class="border-2 text-base p-0.5 rounded border-neutral-700 bg-neutral-800 hover:brightness-105">Search</button>
       </form>
     </div>
-    </header>
-    <div class="flex justify-between">
+  </header>
+    <div class="flex justify-between font-bold text-neutral-300">
       <ol class="ml-16">
         <h2 class="recommendations underline text-2xl -ml-12 mt-4">Our Recommendations</h2>
-        <li><a href="https://open.spotify.com/track/3qiX7QXv6w6y4wsr5KP6U1">Binki-Seasick</a></li>
-         <img src="https://i.scdn.co/image/ab67616d0000b273107edd639e60f9b99029b89c" width="180" height="180" alt="song cover for binki-seasick"> 
-        <li><a href="https://open.spotify.com/track/0fAehaneUJdlSlWXYe1KZp">Earl Sweatshirt- Sunday</a></li>
-        <img src="https://i.scdn.co/image/ab67616d0000b27346f9bf1154c7205b0e8b1667" width="180" height="180" alt="">
-        <li><a href="https://open.spotify.com/track/5S9alBPKlNUOeXHJXiqeSx">J-Cole- Kevins Heart</a></li>
-        <img src="https://i.scdn.co/image/ab67616d0000b273cf0f0affd0138a7442f13706" width="180" height="180" alt="">
-        <li><a href="https://open.spotify.com/track/5hM5arv9KDbCHS0k9uqwjr">Tame Impala-Borderline</a></li>
-        <img src="https://i.scdn.co/image/ab67616d0000b27358267bd34420a00d5cf83a49" width="180" height="180" alt="">
-        <li><a href="https://open.spotify.com/track/1pKYYY0dkg23sQQXi0Q5zN">Daft Punk- Around the World</a></li>
-        <img src="https://i.scdn.co/image/ab67616d0000b2738ac778cc7d88779f74d33311" width="180" height="180" alt="">
-        <li><a href="https://open.spotify.com/track/4iG2gAwKXsOcijVaVXzRPW"> MGMT-Time to Pretend</a></li>
-        <img src="https://i.scdn.co/image/ab67616d0000b2738b32b139981e79f2ebe005eb" width="180" height="180" alt="">
+        <li class="mt-1"><a href="https://open.spotify.com/track/3qiX7QXv6w6y4wsr5KP6U1">Binki-Seasick</a></li>
+        <img src="https://i.scdn.co/image/ab67616d0000b273107edd639e60f9b99029b89c" width="110" height="110" alt="song cover for binki-seasick"> 
+        <li class="mt-3"><a href="https://open.spotify.com/track/0fAehaneUJdlSlWXYe1KZp">Earl Sweatshirt- Sunday</a></li>
+        <img src="https://i.scdn.co/image/ab67616d0000b27346f9bf1154c7205b0e8b1667" width="110" height="110" alt="">
+        <li class="mt-3"><a href="https://open.spotify.com/track/5S9alBPKlNUOeXHJXiqeSx">J-Cole- Kevins Heart</a></li>
+        <img src="https://i.scdn.co/image/ab67616d0000b273cf0f0affd0138a7442f13706" width="110" height="110" alt="">
+        <li class="mt-3"><a href="https://open.spotify.com/track/5hM5arv9KDbCHS0k9uqwjr">Tame Impala-Borderline</a></li>
+        <img src="https://i.scdn.co/image/ab67616d0000b27358267bd34420a00d5cf83a49" width="110" height="110" alt="">
+        <li class="mt-3"><a href="https://open.spotify.com/track/1pKYYY0dkg23sQQXi0Q5zN">Daft Punk- Around the World</a></li>
+        <img src="https://i.scdn.co/image/ab67616d0000b2738ac778cc7d88779f74d33311" width="110" height="110" alt="">
+        <li class="mt-3"><a href="https://open.spotify.com/track/4iG2gAwKXsOcijVaVXzRPW"> MGMT-Time to Pretend</a></li>
+        <img src="https://i.scdn.co/image/ab67616d0000b2738b32b139981e79f2ebe005eb" width="110" height="110" alt="">
       </ol>
-      <div class="mt-5 mr-96">
-        <h2 class="charts underline text-2xl">Top Charts</h2>
-        <ul id="songList" class="text-xl"></ul>
+      <div class="mt-5 mr-40">
+        <h2 class="charts flex justify-center mr-52 underline text-2xl">Top Charts</h2>
+        <ul id="songList" class="text-lg columns-2"></ul>
       </div>
     </div>
   <footer>
-    </footer>
+  </footer>
   <script src="./assets/script.js"></script>
 </body>
