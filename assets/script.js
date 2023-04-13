@@ -31,18 +31,6 @@ fetch('https://billboard3.p.rapidapi.com/hot-100?date=2023-04-07&range=1-8', top
 
 function display(response) {
     list = response;
-
-    for (let i = 0; i < 8; i++) {
-        console.log(list[i].artist)
-        console.log(list[i].title)
-
-    }
-    
-    // for (let i = 0; i < list.length; i++) {
-    //     var li = document.createElement('li');
-    //     li.textContent = list[i].artist + " " + list[i].title;;
-    //     songList.appendChild(li)
-    // }
     for (let i = 0; i < list.length; i++) {
         var li = document.createElement('li');
         var pic = document.createElement('img')
@@ -51,14 +39,6 @@ function display(response) {
         songList.appendChild(li)
         songList.appendChild(pic)
     }
- 
-
-
-//     for (let i = 0; i < list.length; i++) {
-//         var li = document.createElement('li');
-//         li.textContent = list[i].title;
-//         songList.appendChild(li)
-//     }
 }
 
 
