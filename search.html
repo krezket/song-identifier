@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Results | Artist Recommendations</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="./assets/search.css">
+</head>
+
+<body class="font-sans text-neutral-300 bg-gradient-to-b from-neutral-800 from-10% via-neutral-900 via-30% to-neutral-950 to-90%">
+    <header>
+			<div class="flex justify-between p-3 bg-neutral-950">
+				<h1 class="text-4xl p-2 pl-20 -ml-16 font-medium">Artist Recommendations</h1>
+        <form class="nav text-lg" id="form">
+          <h2>Search Artist</h2>
+          <input class="outline-none text-neutral-950 text-base p-0.5 rounded border-2 hover:border-blue-500" id="text-input" type="text" placeholder="Search..">
+          <button class="border-2 text-base p-0.5 rounded border-neutral-700 bg-neutral-800 hover:brightness-105">Search</button>
+        </form>
+      </div>
+		</header>
+
+    <div class="title">
+        <h2 class="flex justify-center text-2xl mt-4 underline" id="search-title" >Song List Recomendations</h2>
+    </div>
+
+    <div id="list-card">
+      <div id="first"></div>
+      <div id="second">
+        <div class="card" id="rel-art"></div>
+        <div class="card" id="rel-art2"></div>
+        <div class="card" id="rel-art3"></div>
+        <div class="card" id="rel-art4"></div>
+        <div class="card" id="rel-art5"></div>
+        <div class="card" id="rel-art6"></div>
+      </div>
+      <div id="third">
+        <div class="card" id="rel-art7"></div>
+        <div class="card" id="rel-art8"></div>
+        <div class="card" id="rel-art9"></div>
+        <div class="card" id="rel-art10"></div>
+        <div class="card" id="rel-art11"></div>
+        <div class="card" id="rel-art12"></div>
+      </div>
+    </div>
+
+    <footer class="bg-neutral-950 mt-20 pb-14 pt-3 button-footer flex justify-center">
+      <button class="transition ease-in-out hover:scale-105 duration-700 text-xl p-5 delay-150 hover:-translate-y-1
+      rounded font-medium border-4 border-neutral-700 bg-neutral-800 hover:brightness-105" id="new">Generate New List</button>
+    </footer>
+    
+    <script src="./assets/search-display.js"></script>
+</body>
