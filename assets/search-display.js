@@ -81,17 +81,24 @@ function searchSim(artistId, search) {
 
     fetch(relatedURL, options)
 	.then(response => response.json())
-	.then(response => displaySim(response, search))
+	.then(response => shuffleArray(response.data.artist.relatedContent.relatedArtists.items))
 	.catch(err => console.error(err));
 }
 
+// SIMILAR ARTIST SHUFFLE 
+function shuffleArray(arrayToShuffle) {
+    for (let i = arrayToShuffle.length - 1; i > 0; i --) {
+        let randomPos = Math.floor(Math.random() * (i + 1));
+        let temp = arrayToShuffle[i];
+        arrayToShuffle[i] = arrayToShuffle[randomPos];
+        arrayToShuffle[randomPos] = temp;
+    }
+    displaySim(arrayToShuffle)
+}
+
 // DISPLAY SIMILAR ARTISTS
-function displaySim(simResults, search) {
-
-    // SIMILAR ARTIST LOOP
-    const array = simResults.data.artist.relatedContent.relatedArtists.items
-    const shuffledArray = array.sort((a, b) => 0.5 - Math.random())
-
+function displaySim(shuffledArray) {
+console.log(shuffledArray)
     let similarArtist = [];
     let simArtImg = [];
     let artistLink = [];
@@ -102,9 +109,7 @@ function displaySim(simResults, search) {
         simArtImg.push(simArtImgs);
         let artistLinks = "https://open.spotify.com/artist/" + shuffledArray[i].id;
         artistLink.push(artistLinks);
-        
     }
-    console.log(artistLink)
 
     var second = document.querySelector("#second");
     second.setAttribute("style", "display: flex; justify-content: space-between; margin-bottom: 40px;");
@@ -280,6 +285,31 @@ function displaySim(simResults, search) {
     simCard12.append(simImg12);
     third.append(simCard12); 
    
+    simCard.addEventListener("mouseenter", () => simCard.setAttribute("style", "width: 140px;"))
+    simCard.addEventListener("mouseleave", () => simCard.setAttribute("style", "width: 160px;"))
+    simCard2.addEventListener("mouseenter", () => simCard2.setAttribute("style", "width: 140px;"))
+    simCard2.addEventListener("mouseleave", () => simCard2.setAttribute("style", "width: 160px;"))
+    simCard3.addEventListener("mouseenter", () => simCard3.setAttribute("style", "width: 140px;"))
+    simCard3.addEventListener("mouseleave", () => simCard3.setAttribute("style", "width: 160px;"))
+    simCard4.addEventListener("mouseenter", () => simCard4.setAttribute("style", "width: 140px;"))
+    simCard4.addEventListener("mouseleave", () => simCard4.setAttribute("style", "width: 160px;"))
+    simCard5.addEventListener("mouseenter", () => simCard5.setAttribute("style", "width: 140px;"))
+    simCard5.addEventListener("mouseleave", () => simCard5.setAttribute("style", "width: 160px;"))
+    simCard6.addEventListener("mouseenter", () => simCard6.setAttribute("style", "width: 140px;"))
+    simCard6.addEventListener("mouseleave", () => simCard6.setAttribute("style", "width: 160px;"))
+    simCard7.addEventListener("mouseenter", () => simCard7.setAttribute("style", "width: 140px;"))
+    simCard7.addEventListener("mouseleave", () => simCard7.setAttribute("style", "width: 160px;"))
+    simCard8.addEventListener("mouseenter", () => simCard8.setAttribute("style", "width: 140px;"))
+    simCard8.addEventListener("mouseleave", () => simCard8.setAttribute("style", "width: 160px;"))
+    simCard9.addEventListener("mouseenter", () => simCard9.setAttribute("style", "width: 140px;"))
+    simCard9.addEventListener("mouseleave", () => simCard9.setAttribute("style", "width: 160px;"))
+    simCard10.addEventListener("mouseenter", () => simCard10.setAttribute("style", "width: 140px;"))
+    simCard10.addEventListener("mouseleave", () => simCard10.setAttribute("style", "width: 160px;"))
+    simCard11.addEventListener("mouseenter", () => simCard11.setAttribute("style", "width: 140px;"))
+    simCard11.addEventListener("mouseleave", () => simCard11.setAttribute("style", "width: 160px;"))
+    simCard12.addEventListener("mouseenter", () => simCard12.setAttribute("style", "width: 140px;"))
+    simCard12.addEventListener("mouseleave", () => simCard12.setAttribute("style", "width: 160px;"))
+
     var newList = document.querySelector("#new");
     newList.addEventListener("click", function(){
         window.location.reload();
